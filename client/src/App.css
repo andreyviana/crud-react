@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+*{
+  font-family: 'Outfit', sans-serif;
+}
+
+body{
+  background-color: #5be78a;
+}
+
+p{
+  font-size: 16px;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input{
+  width: 300px;
+  height: 30px;
+  font-size: 15px;
+  margin: 5px;
+}
+
+.update-delete{
+  width: 75px;
+}
+
+button{
+  margin-left: 5px;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 5px;
+  color: #ddd;
+  cursor: pointer;
+  background-color: rgb(55, 55, 55);
+  font-size: 12px;
+}
+
+button:hover{
+  background-color: rgb(40, 40, 40);
+}
+
+.column {
+  float: left;
+  width: 200px;
+  padding: 0 10px;
+}
+
+
+/*Lista das palavras*/
+
+/* Remove extra left and right margins, due to padding */
+div.row{
+  display: flex;
+  margin-top: 50px;
+}
+
+.row {margin: 0 0px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.input-border[type='text']{
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  color: black;
+  background-color: #ddd;
+  padding: 5px 50px;
+  outline: none;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.input-border::placeholder{
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+hr{
+  margin-top: 20px;
+  border-width: 2px;
+}
+
+.titulo{
+  border-width: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  margin-bottom: 15px;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.navbar{
+  position: fixed;
+  top: 0;
+}
