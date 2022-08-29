@@ -21,14 +21,14 @@ p{
 }
 
 input{
-  width: 300px;
+  width: clamp(50px, 50%, 200%);
   height: 30px;
   font-size: 15px;
   margin: 5px;
 }
 
 .update-delete{
-  width: 75px;
+  width: 20% auto;
 }
 
 button{
@@ -47,8 +47,9 @@ button:hover{
 }
 
 .column {
-  float: left;
-  width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  width: clamp(60px, 50%, 200px);
   padding: 0 10px;
 }
 
@@ -59,9 +60,11 @@ button:hover{
 div.row{
   display: flex;
   margin-top: 50px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
-
-.row {margin: 0 0px;}
 
 /* Clear floats after the columns */
 .row:after {
@@ -72,10 +75,9 @@ div.row{
 
 /* Responsive columns */
 @media screen and (max-width: 600px) {
-  .column {
+    .column {
     width: 100%;
     display: block;
-    margin-bottom: 20px;
   }
 }
 
@@ -141,4 +143,9 @@ li a:hover {
 .navbar{
   position: fixed;
   top: 0;
+}
+
+.responsive{
+  display: flex;
+  flex-direction: column-reverse;
 }

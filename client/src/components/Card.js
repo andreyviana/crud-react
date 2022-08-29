@@ -56,26 +56,27 @@ const Card = () => {
                     />
                     <button onClick={AdicionarNaTabela}>Adicionar</button>
                     <hr className='titulo'></hr>
-                    {comumLista.map((val, i) => {
-
-                        return (
-                        <div key={i}>
-                            <p> {val.PalavrasComuns} </p> 
-                            <input 
-                                className='input-border'
-                                type="text" 
-                                placeholder="alterar" 
-                                onChange={(event) => 
-                                {
-                                    setNovaComum(event.target.value);
-                                }}
-                            />
-                            <button className="update-delete" onClick={() => AtualizarComuns(val._id)}>Atualizar</button>
-                            <button className="update-delete" onClick={() => DeletarComuns(val._id)}>Deletar</button>
-                            <hr></hr>
-                        </div>
-                        );
-                    })}
+                    <div className='responsive'>
+                        {comumLista.map((val, i) => {
+                            return (
+                            <div key={i}>
+                                <p> {val.PalavrasComuns} </p> 
+                                <input 
+                                    className='input-border'
+                                    type="text" 
+                                    placeholder="alterar" 
+                                    onChange={(event) => 
+                                    {
+                                        setNovaComum(event.target.value);
+                                    }}
+                                />
+                                <button className="update-delete" onClick={() => AtualizarComuns(val._id)}>Atualizar</button>
+                                <button className="update-delete" onClick={() => DeletarComuns(val._id)}>Deletar</button>
+                                <hr></hr>
+                            </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
             <div className="column">
