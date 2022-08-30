@@ -4,6 +4,8 @@ import '../App.css';
 
 const Card = () => {
 
+//PALAVRAS COMUNS
+
     const [palavraComum, setPalavraComum] = useState('');
     const [novaComum, setNovaComum] = useState('');
     const [comumLista, setComumLista] = useState([]);
@@ -40,12 +42,56 @@ const Card = () => {
         setComumLista([...response.data]);
       });
     };
+//
+//
+//
+//SIGLAS
+//
+//
+//
+
+const [useSigla, setUseSigla] = useState('');
+const [novaSigla, setNovaSigla] = useState('');
+const [siglaLista, setSiglaLista] = useState([]);
+
+useEffect(() => {
+    Axios.get('http://localhost:3001/readsigla').then((response) => {
+    setSiglaLista(response.data);
+  });
+}, []);
+
+const AdicionarSigNaTabela = () => {
+    Axios.post('http://localhost:3001/insertsigla', {
+        useSigla: useSigla,
+  }).then((response) => 
+  {
+    setSiglaLista([...response.data]);
+  });
+};
+
+const AtualizarSigla = (id) => {
+    Axios.put('http://localhost:3001/updatesigla', 
+    {
+        id: id,
+        novaSigla: novaSigla,
+    }).then((response) => {
+        setSiglaLista([...response.data]);
+    });
+};
+const DeletarSigla = (id) => {
+  Axios.delete(`http://localhost:3001/deletesigla/${id}`, 
+  {
+    siglaLista: siglaLista,
+  }).then((response) => {
+    setSiglaLista([...response.data]);
+  });
+};
 
     return (
         <div className="row">
-            <div className="column">
+            <div id="comum" className="column">
                 <div className="card">
-                    <h2>Comuns</h2>
+                    <h2>Palavras Comuns</h2>
                     <input 
                         className='input-border'
                         type='text' 
@@ -79,28 +125,57 @@ const Card = () => {
                     </div>
                 </div>
             </div>
-            <div className="column">
+            <div id="sigla" className="column">
                 <div className="card">
                     <h2>Siglas</h2>
+                    <input 
+                        className='input-border'
+                        type='text' 
+                        onChange={(event) => 
+                        {
+                            setUseSigla(event.target.value);
+                        }}
+                    />
+                    <button onClick={AdicionarSigNaTabela}>Adicionar</button>
                     <hr className='titulo'></hr>
-                    <input className='input-border' type='text' placeholder='em breve' />
+                    <div className='responsive'>
+                        {siglaLista.map((val, i) => {
+                            return (
+                            <div key={i}>
+                                <p> {val.Siglas} </p> 
+                                <input 
+                                    className='input-border'
+                                    type="text" 
+                                    placeholder="alterar" 
+                                    onChange={(event) => 
+                                    {
+                                        setNovaSigla(event.target.value);
+                                    }}
+                                />
+                                <button className="update-delete" onClick={() => AtualizarSigla(val._id)}>Atualizar</button>
+                                <button className="update-delete" onClick={() => DeletarSigla(val._id)}>Deletar</button>
+                                <hr></hr>
+                            </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
-            <div className="column">
+            <div id="nome" className="column">
                 <div className="card">
                     <h2>Nomes Próprios</h2>
                     <hr className='titulo'></hr>
                     <input className='input-border' type='text' placeholder='em breve' />
                 </div>
             </div>
-            <div className="column">
+            <div id="palavrao" className="column">
                 <div className="card">
                     <h2>Palavrões</h2>
                     <hr className='titulo'></hr>
                     <input className='input-border' type='text' placeholder='em breve' />
                 </div>
             </div>
-            <div className="column">
+            <div id="giria" className="column">
                 <div className="card">
                     <h2>Gírias</h2>
                     <hr className='titulo'></hr>

@@ -59,7 +59,7 @@ button:hover{
 /* Remove extra left and right margins, due to padding */
 div.row{
   display: flex;
-  margin-top: 50px;
+  margin-top: 5rem;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 30px;
@@ -74,11 +74,19 @@ div.row{
 }
 
 /* Responsive columns */
-@media screen and (max-width: 600px) {
-    .column {
+@media screen and (max-width: 768px) {
+  .column {
     width: 100%;
     display: block;
   }
+
+}
+@media screen and (max-width: 308px) {
+  div.row{
+    margin-top: 10rem;
+
+  }
+
 }
 
 /* Style the counter cards */
@@ -126,6 +134,11 @@ ul {
 
 li {
   float: left;
+  justify-content: right;
+}
+
+li.vocabulario{
+  float: right;
 }
 
 li a {
@@ -143,9 +156,25 @@ li a:hover {
 .navbar{
   position: fixed;
   top: 0;
+  width: 100%;
 }
 
 .responsive{
   display: flex;
   flex-direction: column-reverse;
+}
+
+.search-wrapper{
+  display: flex;
+  font-display: column;
+  gap: .25rem;
+}
+
+input {
+  font-size: 1rem;
+}
+
+a{
+  font-size: clamp(.8rem,50%,1rem);
+  align-items: right;
 }
